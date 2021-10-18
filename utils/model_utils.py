@@ -80,3 +80,12 @@ def visualize_tensor(tensor, nrow=8, padding=2,
     im = Image.fromarray(ndarr)
     # im.show()
     return im
+
+
+def tree_construct_loss(leaf_number):
+    entropy_prob = leaf_number / (2 * leaf_number - 1)
+    big_o = 1/leaf_number
+    structure_cost = math.log((2 * leaf_number - 1) ** 2 / ((leaf_number ** 1.5) * (leaf_number - 1) ** 0.5)) + \
+                     (2 * leaf_number - 1) * (-entropy_prob * math.log(entropy_prob) - (1 - entropy_prob) * math.log(1 - entropy_prob))+\
+                     big_o
+    return structure_cost

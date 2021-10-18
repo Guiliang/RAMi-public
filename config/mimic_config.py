@@ -14,11 +14,7 @@ class DRLMimicConfig(object):
             super(DRLMimicConfig.DEG, self).__init__(init)
             self.MONET = DRLMimicConfig.DEG.MONET(init["MONET"])
             self.CMONET = DRLMimicConfig.DEG.CMONET(init["CMONET"])
-            self.AAE = DRLMimicConfig.DEG.AAE(init["AAE"])
             self.Learn = DRLMimicConfig.DEG.Learn(init["Learn"])
-            self.FVAE = DRLMimicConfig.DEG.FVAE(init["FVAE"])
-            self.CVAE = DRLMimicConfig.DEG.CVAE(init["CVAE"])
-            self.VAE = DRLMimicConfig.DEG.VAE(init["VAE"])
 
         class Learn(InitWithDict):
             batch_size = None
@@ -32,57 +28,6 @@ class DRLMimicConfig(object):
             image_type = None
             num_workers = None
             dset_dir = None
-
-
-        class AAE(InitWithDict):
-            lr_D = None
-            beta1_D = None
-            beta2_D = None
-            lr_G = None
-            beta1_G = None
-            beta2_G = None
-            lr_E = None
-            beta1_E = None
-            beta2_E = None
-            ckpt_save_iter = None
-
-
-        class FVAE(InitWithDict):
-            gamma = None
-            lr_VAE = None
-            beta1_VAE = None
-            beta2_VAE = None
-            lr_D = None
-            beta1_D = None
-            beta2_D = None
-            ckpt_save_iter = None
-            output_save = None
-            gmma = None
-            ckpt_load = None
-
-        class VAE(InitWithDict):
-            gamma = None
-            lr_VAE = None
-            beta1_VAE = None
-            beta2_VAE = None
-            ckpt_save_iter = None
-            output_save = None
-            gmma = None
-            ckpt_load = None
-
-
-        class CVAE(InitWithDict):
-            gamma = None
-            lr_VAE = None
-            beta1_VAE = None
-            beta2_VAE = None
-            lr_D = None
-            beta1_D = None
-            beta2_D = None
-            ckpt_save_iter = None
-            output_save = None
-            gmma = None
-            ckpt_load = None
 
         class MONET(InitWithDict):
             lr = None

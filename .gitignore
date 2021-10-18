@@ -1,3 +1,9 @@
-.txt
-.pyc
+*.txt
+*.pt
+*.pyc
+*.png
 example_data/flappybird/origin/images/*
+example_data/flappybird/origin/latent_features/*
+saved_models/DEG/flappybird/*
+saved_models/DRL-interpreter-model/MCTS/flappybird/tree_models/*
+saved_models/DRL-interpreter-model/MCTS/flappybird/tree_nodes/*

@@ -36,7 +36,6 @@ class DRLDataGenerator():
         self.device = 'cuda' if use_cuda else 'cpu'
         self.actions_number = self.config.DRL.Learn.actions
         self.nn = FlappyBirdDQN().to(self.device)
-        self.optim = optim.Adam(self.nn.parameters(), lr=self.config.DRL.Learn.learning_rate)
         if config.DRL.Learn.ckpt_load:
             self.load_checkpoint(model_name='flappy_bird_model')
         if require_env:
@@ -54,7 +53,6 @@ class DRLDataGenerator():
                     checkpoint = torch.load(f, map_location=torch.device('cpu'))
             self.global_iter = checkpoint['iter']
             self.nn.load_state_dict(checkpoint['model_states']['FlappyBirdDQN'])
-            self.optim.load_state_dict(checkpoint['optim_states']['optim_DQN'])
             print("load from checkpoint: {0}".format(filepath))
 
     def sample_batch(self):
@@ -70,7 +68,7 @@ class DRLDataGenerator():
     def test_model_and_generate_data(self, test_size=500):
         """
         Generate the data with the learned model, here we use flappybird to show an example,
-        You replace it with other agent, for example, the agent in tensorpack http://models.tensorpack.com/#OpenAIGym
+        You can replace it with other agent, for example, the agent in tensorpack http://models.tensorpack.com/#OpenAIGym
         """
         assert self.game_name == "flappybird"
         with open(self.data_save_path + 'action_values.txt', 'w') as action_values_file:
